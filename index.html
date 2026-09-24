@@ -3,9 +3,16 @@
 <head>
     <link rel="icon" type="image/png" href="./icon.png">
     <title>axiom</title>
+    <script src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=5be97e70efbd4305947aa685b30e792d"></script>
 </head>
 <body>
     <h1>asgasgegargrergd</h1>
     <p>Welcome to my Github Pages website</p>
+    <div id="calculator" style="width: 600px; height: 400px;">
+    </div>
+    <script>
+        var elt = document.getElementById('calculator');
+        var calculator = Desmos.GraphingCalculator(elt);
+    </script>
 </body>
 </html>
