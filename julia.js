@@ -10,8 +10,8 @@ const maxIter = 100;
 function drawJulia(cRe, cIm) {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
-            let zRe = 1.5 * (x - width / 2) / (0.5 * width);
-            let zIm = 1.5 * (y - height / 2) / (0.5 * height);
+            let zRe = 2*(x - width / 2)/(0.5 * width);
+            let zIm = 2*(y - height / 2)/(0.5 * height);
             let i = 0;
             while (i < maxIter && (zRe*zRe+zIm*zIm) <= 4) {
                 let oldRe = zRe;
@@ -25,9 +25,10 @@ function drawJulia(cRe, cIm) {
                 data[pix + 1] = 0;
                 data[pix + 2] = 0;
             } else {
-                data[pix] = (i * 8) % 256;
-                data[pix + 1] = (i * 5) % 256;
-                data[pix + 2] = (i * 12) % 256;
+                let gray = 255-Math.floor((i/maxIter)*255);
+                data[pix] = gray;
+                data[pix + 1] = gray;
+                data[pix + 2] = gray;
             }
             data[pix+3] = 255;
         }
@@ -44,4 +45,4 @@ canvas.addEventListener('mousemove', (event) => {
     drawJulia(cRe, cIm);
 });
 
-drawJulia(-0.7, 0.27015);
+drawJulia(0,0);
